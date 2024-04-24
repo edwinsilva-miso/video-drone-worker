@@ -2,8 +2,7 @@ from decouple import config
 
 
 class Config:
-    CELERY_BROKER_URL = config('CELERY_BROKER_URL')
-    CELERY_RESULT_BACKEND = config('CELERY_RESULT_BACKEND')
+    RABBITMQ_URL_CONNECTION = config('RABBITMQ_URL_CONNECTION')
 
 
 class DevelopmentConfig(Config):

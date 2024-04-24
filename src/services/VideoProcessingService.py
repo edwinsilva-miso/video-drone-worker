@@ -9,7 +9,11 @@ import cv2
 class VideoProcessingService:
 
     @classmethod
-    async def save_video(cls, file, filename):
+    def save_video(cls, message):
+        content = message.split(': ', 2)
+        file = content[0]
+        filename = content[1]
+
         video_path = config('VIDEO_PATH')
         source_path = config('SOURCE_PATH')
 
@@ -31,6 +35,7 @@ class VideoProcessingService:
 
         # Aquí debemos enviar el producer de la respuesta del video
         return jsonify({
+            "filename": filename,
             "status": VideoStatus.processed,
             "path": new_video_path
         })
